@@ -59,9 +59,14 @@ def ord_heapsort(lista):
     pasos = 0
 
     def heapify(lista, size, index):
+        nonlocal comparaciones, intercambios, pasos
         largest = index
         left = 2 * index + 1
         right = 2 * index + 2
+
+        # Realizar comparaciones
+        comparaciones += 1
+        pasos += 1
 
         if left < size and lista[left] > lista[largest]:
             largest = left
@@ -70,6 +75,9 @@ def ord_heapsort(lista):
             largest = right
 
         if largest != index:
+            # Realizar intercambio
+            intercambios += 1
+            pasos += 1
             lista[index], lista[largest] = lista[largest], lista[index]
             heapify(lista, size, largest)
 
@@ -81,6 +89,9 @@ def ord_heapsort(lista):
 
     # Extraer elementos uno por uno
     for i in range(size - 1, 0, -1):
+        # Realizar intercambio
+        intercambios += 1
+        pasos += 1
         lista[0], lista[i] = lista[i], lista[0]
         heapify(lista, i, 0)
 
