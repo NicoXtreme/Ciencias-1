@@ -1,4 +1,4 @@
-from generar_numeros import generar_numeros_aleatorios
+from generador import generar_numeros_aleatorios
 from ordenamiento import *
 
 try:
@@ -17,7 +17,7 @@ try:
         print("Por favor, seleccione una opción válida.")
         exit()
 
-    numeros_generados = generar_numeros_aleatorios(cantidad_numeros, rango)
+    numeros_generados = generar_numeros_aleatorios(cantidad_numeros)
 
     # Guardar números sin ordenar en un archivo
     with open("numeros_sin_ordenar.txt", "w") as archivo_sin_ordenar:
@@ -36,7 +36,7 @@ try:
     elif metodo_ordenamiento == "heap":
         ord_heapsort(numeros_generados)        
     else:
-        print("Método de ordenamiento no válido. Se utilizará el método de burbuja por defecto.")
+        print("Método de ordenamiento no válido.")
 
     # Guardar números ordenados en un archivo
     with open("numeros_ordenados.txt", "w") as archivo_ordenado:

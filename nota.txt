@@ -1,0 +1,22 @@
+Samuel Antonio Sanchez Peña -20212020151
+Nicolás Francisco Ortiz Luna - 20212020079
+Juan Carlos Duarte Sandoval-20212020149
+OBSERVACIONES SOBRE LAS MÉTRICAS DE LA ACTIVIDAD
+
+Ciclos:
+La fórmula utilizada, (n(n-1))/2, representa el número total de ciclos 
+realizados por los algoritmos de ordenamiento burbuja y selección en una lista de n elementos. 
+Este cálculo se justifica porque en cada pasada del algoritmo, se comparan elementos adyacentes, 
+resultando en un número constante de ciclos en el peor caso.
+
+Pasos del Algoritmo Burbuja:
+La fórmula empleada, (3n(n-1)) + 3 + 4 + 2 + variable, determina el número total de pasos ejecutados en el algoritmo de ordenamiento burbuja.
+Aquí, 'n' representa la longitud de la lista a ordenar, mientras que (3n(n - 1)) refleja las comparaciones e intercambios en los bucles. Las constantes 3, 4 y 2 representan operaciones adicionales dentro y fuera de los bucles, respectivamente. 
+La variable adicional puede incluir otros costos asociados con la ejecución del algoritmo.
+
+Pasos del Algoritmo de Selección:
+La fórmula utilizada es n^2/2 + (n-1) + 2 + variable.
+ Esto se debe a que el bucle interno se ejecuta aproximadamente n^2 veces, 
+ mientras que el bucle externo se ejecuta n - 1 veces. 
+ A estos se suman 2 pasos adicionales antes y después del bucle externo.
+
