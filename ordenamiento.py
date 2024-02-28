@@ -117,3 +117,57 @@ def ord_heapsort(lista):
     print(f"Pasos realizados: {pasos}")
     print(f"Ciclos realizados: {ciclos}")
     print(f"Tiempo de ejecución: {tiempo_total:.6f} segundos")
+
+
+def ord_mergesort(lista):
+    inicio = time.perf_counter()
+    pasos = 0
+    ciclos = 0
+
+    
+
+    fin = time.perf_counter()
+    tiempo_total = fin - inicio
+
+    print(f"Pasos realizados: {pasos}")
+    print(f"Ciclos realizados: {ciclos}")
+    print(f"Tiempo de ejecución: {tiempo_total:.6f} segundos")
+
+    def merge(lista):    
+        if len(lista) > 1:
+            medio = len(lista) // 2
+            izq = lista[:medio]
+            der = lista[medio:]
+
+            merge(izq)
+            merge(der)
+
+            i, j, k = 0, 0, 0
+
+            while i < len(izq) and j < len(der):
+                if izq[i] <= der[j]:
+                    lista[k] = izq[i]
+                    i += 1
+                else:
+                    lista[k] = der[j]
+                    j += 1
+                k += 1
+
+            while i < len(izq):
+                lista[k] = izq[i]
+                i += 1
+                k += 1
+
+            while j < len(der):
+                lista[k] = der[j]
+                j += 1
+                k += 1
+    merge(lista)
+
+    fin = time.perf_counter()
+    tiempo_total = fin - inicio
+
+    print(f"Pasos realizados: {pasos}")
+    print(f"Ciclos realizados: {ciclos}")
+    print(f"Tiempo de ejecución: {tiempo_total:.6f} segundos")
+
