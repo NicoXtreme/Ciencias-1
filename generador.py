@@ -1,8 +1,9 @@
-import random  # Importamos el módulo random para generar números aleatorios
+import random
 
-def generar_numeros_aleatorios(cantidad):
-    """Genera una lista de números aleatorios."""
+def generar_numeros_aleatorios(cantidad, rango_maximo):
+    """Genera una lista de números aleatorios dentro del rango especificado."""
     numeros_aleatorios = []
     for _ in range(cantidad):
-        numeros_aleatorios.append(random.randint(1, 1000))  # Genera un número aleatorio y lo agrega a la lista
+        numero_aleatorio = random.randint(1, rango_maximo)  # Genera un número aleatorio entre 1 y el rango máximo
+        numeros_aleatorios.append(numero_aleatorio)  # Agrega el número a la lista
     return numeros_aleatorios
