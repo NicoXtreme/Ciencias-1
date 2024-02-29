@@ -123,17 +123,10 @@ def ord_mergesort(lista):
     inicio = time.perf_counter()
     pasos = 0
     ciclos = 0
-
     
-
-    fin = time.perf_counter()
-    tiempo_total = fin - inicio
-
-    print(f"Pasos realizados: {pasos}")
-    print(f"Ciclos realizados: {ciclos}")
-    print(f"Tiempo de ejecución: {tiempo_total:.6f} segundos")
-
     def merge(lista):    
+        nonlocal pasos, ciclos  # Necesario para acceder a las variables externas
+        
         if len(lista) > 1:
             medio = len(lista) // 2
             izq = lista[:medio]
@@ -152,16 +145,22 @@ def ord_mergesort(lista):
                     lista[k] = der[j]
                     j += 1
                 k += 1
+                pasos += 1
 
             while i < len(izq):
                 lista[k] = izq[i]
                 i += 1
                 k += 1
+                pasos += 1
 
             while j < len(der):
                 lista[k] = der[j]
                 j += 1
                 k += 1
+                pasos += 1
+
+            ciclos += 1  # Contabiliza la llamada recursiva
+    
     merge(lista)
 
     fin = time.perf_counter()
@@ -171,3 +170,34 @@ def ord_mergesort(lista):
     print(f"Ciclos realizados: {ciclos}")
     print(f"Tiempo de ejecución: {tiempo_total:.6f} segundos")
 
+
+def ord_quicksort(lista):
+    inicio = time.perf_counter()
+    pasos = 0
+    ciclos = 0
+    
+    def quick(lista):
+        nonlocal pasos, ciclos
+        
+        if len(lista) <= 1:
+            return lista
+        else:
+            pivote = lista[-1]
+            i = [p for p in lista[:-1] if p <= pivote]
+            j = [p for p in lista[:-1] if p > pivote]
+            # Conteo de pasos realizados en esta partición
+            pasos += len(lista) - 1
+            # Conteo de llamadas recursivas
+            ciclos += 1
+            return quick(i) + [pivote] + quick(j)
+    
+    lista_ordenada = quick(lista)
+    
+    fin = time.perf_counter()
+    tiempo_total = fin - inicio
+
+    print(f"Pasos realizados: {pasos}")
+    print(f"Ciclos realizados: {ciclos}")
+    print(f"Tiempo de ejecución: {tiempo_total:.6f} segundos")
+
+    return lista_ordenada

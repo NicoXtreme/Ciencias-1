@@ -12,7 +12,7 @@ class Aplicacion(tk.Tk):
         self.ordenamiento_var = tk.StringVar()
         self.ordenamiento_var.set("burbuja")  # Valor predeterminado
         self.ordenamiento_label = tk.Label(self, text="Seleccione un método de ordenamiento:")
-        self.ordenamiento_menu = tk.OptionMenu(self, self.ordenamiento_var, "burbuja", "seleccion", "insercion", "heap", "merge")
+        self.ordenamiento_menu = tk.OptionMenu(self, self.ordenamiento_var, "burbuja", "seleccion", "insercion", "heap", "merge", "quick")
 
         # Crear una barra desplegable para la cantidad de números
         self.cantidad_var = tk.StringVar()
@@ -61,7 +61,9 @@ class Aplicacion(tk.Tk):
         elif metodo_ordenamiento == "heap":
             ord_heapsort(self.numeros_generados)
         elif metodo_ordenamiento == "merge":
-            ord_mergesort(self.numeros_generados)            
+            ord_mergesort(self.numeros_generados)
+        elif metodo_ordenamiento == "quick":
+            self.numeros_generados = ord_quicksort(self.numeros_generados)
         self.result_text_sorted.delete(1.0, tk.END)
         for numero in self.numeros_generados:    
             self.result_text_sorted.insert(tk.END, f"{numero}\n")
